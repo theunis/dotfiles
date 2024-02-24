@@ -1,0 +1,19 @@
+back: "Backspace"
+menu:
+  o:
+    name: "Open"
+    keys:
+      o: {command: "open /Applications/Obsidian.app", name: "Obsidian"}
+      a: {command: "open /Applications/Arc.app", name: "Arc"}
+      v: {command: "open '/Applications/Visual Studio Code.app'", name: "VSCode"}
+      k: {command: "open /Applications/kitty.app", name: "kitty"}
+  n:
+    name: "Notebooks"
+    keys:
+      n: {command: "code ~/Development/Workspaces/dbx-predictions.code-workspace && cd ~/Development/predictions && cp notebooks/dev/dev-template.ipynb notebooks/dev/dev-$(date +'%d%m%y%H%M').ipynb && code notebooks/dev/dev-$(date +'%d%m%y%H%M').ipynb", name: "New from template"}
+  s:
+    name: "Scripts"
+    keys:
+      a: {command: "kitty @ launch --type=window pegt-monitor-ams", name: "PEGT Monitor AMS"}
+      b: {command: "kitty @ launch --type=window bash -c 'echo 'Hello from kitty'; read'", name: "Kitty hello"}
+      
