@@ -32,5 +32,6 @@ yabai -m rule --add app="^Microsoft Teams classic$" manage=off
 yabai -m rule --add app=".*Preferences" manage=off
 yabai -m rule --add app="^Simulator$" manage=off
 yabai -m rule --add app="^1Password$" manage=off
+yabai -m rule --add app="^Python$" manage=off
 
 
