@@ -11,6 +11,12 @@ menu:
     name: "Notebooks"
     keys:
       n: {command: "code ~/Development/Workspaces/dbx-predictions.code-workspace && cd ~/Development/predictions && cp notebooks/dev/dev-template.ipynb notebooks/dev/dev-$(date +'%d%m%y%H%M').ipynb && code notebooks/dev/dev-$(date +'%d%m%y%H%M').ipynb", name: "New from template"}
+  d:
+    name: "Datasets"
+    keys:
+      f: {command: "cd ~/Development/predictions && source venv/bin/activate && vd notebooks/dev/df_flights_ein.feather", name: "EIN Flights"}
+      u: {command: "cd ~/Development/predictions && source venv/bin/activate && vd notebooks/dev/df_unified_events_ein.feather", name: "EIN Unified event"}
+      m: {command: "cd ~/Development/predictions && source venv/bin/activate && vd notebooks/dev/df_monitoring_ein.feather", name: "EIN Monitoring"}
   s:
     name: "Scripts"
     keys:

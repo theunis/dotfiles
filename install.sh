@@ -88,5 +88,35 @@ else
     echo ".zshrc_local already exists."
 fi
 
+echo "Checking for IPython installation..."
+if command -v ipython &> /dev/null; then
+    echo "IPython is installed, proceeding with setup..."
+    
+    IPYTHON_PROFILE="terminal"
+    echo "Checking for IPython profile '${IPYTHON_PROFILE}'..."
+    if ipython profile list | grep -q "${IPYTHON_PROFILE}"; then
+        echo "IPython profile '${IPYTHON_PROFILE}' already exists."
+    else
+        echo "Creating IPython profile '${IPYTHON_PROFILE}'..."
+        ipython profile create "${IPYTHON_PROFILE}"
+    fi
+
+    # Determine the IPython startup directory for the profile
+    IPYTHON_STARTUP_DIR="${HOME}/.ipython/profile_${IPYTHON_PROFILE}/startup"
+    # Ensure the directory exists (it should, but just in case)
+    mkdir -p "${IPYTHON_STARTUP_DIR}"
+
+    # Symlink all files in the dotfiles/ipython directory
+    echo "Linking IPython startup scripts..."
+    for src in "${DOTFILES_DIR}/ipython"/*; do
+        dst="${IPYTHON_STARTUP_DIR}/$(basename "$src")"
+        create_symlink "$src" "$dst"
+    done
+
+    echo "IPython setup completed successfully."
+else
+    echo "IPython is not installed, skipping IPython setup."
+fi
+
 echo "Dotfiles setup completed successfully."
 
