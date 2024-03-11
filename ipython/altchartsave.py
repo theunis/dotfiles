@@ -19,12 +19,21 @@ def custom_repr_mimebundle_(self, include=None, exclude=None):
     # Save the chart without attempting to display it again
     save_chart_to_html(self)
     # Proceed with Altair's normal rendering process
-    return
+    return self._original_repr_mimebundle_(include=include, exclude=exclude)
 
 
-# Ensure we don't override the method more than once
-if not hasattr(alt.Chart, "_original_repr_mimebundle_"):
-    alt.Chart._original_repr_mimebundle_ = alt.Chart._repr_mimebundle_
+# List of Altair chart types to override
+chart_types = [
+    alt.Chart,
+    alt.LayerChart,
+    alt.HConcatChart,
+    alt.VConcatChart,
+    alt.RepeatChart,
+]
 
-# Override Altair's _repr_mimebundle_ method
-alt.Chart._repr_mimebundle_ = custom_repr_mimebundle_
+for chart_type in chart_types:
+    # Ensure we don't override the method more than once
+    if not hasattr(chart_type, "_original_repr_mimebundle_"):
+        chart_type._original_repr_mimebundle_ = chart_type._repr_mimebundle_
+
+    chart_type._repr_mimebundle_ = custom_repr_mimebundle_
