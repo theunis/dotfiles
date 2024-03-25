@@ -42,7 +42,7 @@ create_symlink "${DOTFILES_DIR}/skhd" ~/.config/skhd
 create_symlink "${DOTFILES_DIR}/kitty" ~/.config/kitty
 
 # Tmux (optional)
-# create_symlink "${DOTFILES_DIR}/tmux/.tmux.conf" ~/.tmux.conf
+create_symlink "${DOTFILES_DIR}/tmux/tmux.conf" ~/.config/tmux/tmux.conf
 
 # ZSH
 create_symlink "${DOTFILES_DIR}/zsh/.zshrc" ~/.zshrc
