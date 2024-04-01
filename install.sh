@@ -92,7 +92,8 @@ echo "Checking for IPython installation..."
 if command -v ipython &> /dev/null; then
     echo "IPython is installed, proceeding with setup..."
     
-    IPYTHON_PROFILE="terminal"
+    # IPYTHON_PROFILE="terminal"
+    IPYTHON_PROFILE="default"
     echo "Checking for IPython profile '${IPYTHON_PROFILE}'..."
     if ipython profile list | grep -q "${IPYTHON_PROFILE}"; then
         echo "IPython profile '${IPYTHON_PROFILE}' already exists."

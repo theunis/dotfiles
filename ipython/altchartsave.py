@@ -1,5 +1,6 @@
-import altair as alt
 import os
+
+import altair as alt
 
 
 def save_chart_to_html(chart, filename="~/html/index.html"):
@@ -29,6 +30,7 @@ chart_types = [
     alt.HConcatChart,
     alt.VConcatChart,
     alt.RepeatChart,
+    alt.FacetChart,
 ]
 
 for chart_type in chart_types:
