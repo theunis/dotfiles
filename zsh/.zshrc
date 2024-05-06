@@ -81,7 +81,8 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 
 # zsh-syntax-highlighting must be last in the list
-plugins=(git python pip aliases tmux zsh-syntax-highlighting)
+plugins=(git python pip aliases  zsh-syntax-highlighting)
+# tmux
 
 source $ZSH/oh-my-zsh.sh
 
@@ -120,6 +121,10 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # Aliases
 alias v="nvim ."
+alias svba="source venv/bin/activate"
+alias ll="lsd -l"
+alias cd=z
+alias setupvenv="~/dotfiles/setup_venv.sh"
 
 # Source local configurations if the file exists
 if [ -f ~/.zshrc_local ]; then

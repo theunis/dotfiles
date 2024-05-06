@@ -35,16 +35,33 @@ code = """
 import json, sys
 def get_var_details():
     details = []
-    for name, obj in globals().items():
-        if not name.startswith('_') and name != 'get_var_details' and name != 'json' and name != 'sys':
+    globals_items = globals().copy()
+
+    for name, obj in globals_items.items():
+        if (
+            not name.startswith("_")
+            and name != "get_var_details"
+            and name != "json"
+            and name != "sys"
+            and name != "size"
+            and name != "content"
+            and name != "get_ipython"
+            and name != "In"
+            and name != "Out"
+            and name != "globals_items"
+            and name != "name"
+            and name != "obj"
+        ):
             try:
                 size = str(sys.getsizeof(obj))
                 # Safely get a string representation of the object
-                content = repr(obj)[:50] + '...' if len(repr(obj)) > 50 else repr(obj)
+                print(name)
+                content = repr(obj)[:50] + "..." if len(repr(obj)) > 50 else repr(obj)
             except:
-                size = 'Error'
-                content = 'Unrepresentable object'
-            details.append({'varName': name, 'varType': type(obj).__name__, 'varSize': size, 'varContent': content})
+                size = "Error"
+                content = "Unrepresentable object"
+            details.append({"varName": name, "varType": type(obj).__name__, "varSize": size, "varContent": content})
+
     return json.dumps(details)
 
 get_var_details()

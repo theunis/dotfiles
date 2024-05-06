@@ -46,7 +46,7 @@ def to_feather(line):
     file_path = os.path.join(folder_path, file_name)
 
     # Write the DataFrame to Feather format
-    df.to_feather(file_path)
+    df.reset_index().to_feather(file_path)
     print(
         f"DataFrame '{variable_name}' has been written to '{file_path}' in Feather format."
     )
