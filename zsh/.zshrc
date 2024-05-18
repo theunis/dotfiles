@@ -124,7 +124,7 @@ alias v="nvim ."
 alias svba="source venv/bin/activate"
 alias ll="lsd -l"
 alias cd=z
-alias setupvenv="~/dotfiles/setup_venv.sh"
+alias setupvenv="~/dotfiles/setup_venv_gum.sh"
 
 # Source local configurations if the file exists
 if [ -f ~/.zshrc_local ]; then
