@@ -41,8 +41,15 @@ create_symlink "${DOTFILES_DIR}/skhd" ~/.config/skhd
 # Kitty
 create_symlink "${DOTFILES_DIR}/kitty" ~/.config/kitty
 
-# Tmux (optional)
+# Tmux
 create_symlink "${DOTFILES_DIR}/tmux/tmux.conf" ~/.config/tmux/tmux.conf
+
+# Custom tmux scripts
+TMUX_CUSTOM_DIR=~/.config/tmux/plugins/tmux/custom
+mkdir -p "$TMUX_CUSTOM_DIR"
+for script in "${DOTFILES_DIR}/tmux/custom/"*; do
+    create_symlink "$script" "${TMUX_CUSTOM_DIR}/$(basename "$script")"
+done
 
 # ZSH
 create_symlink "${DOTFILES_DIR}/zsh/.zshrc" ~/.zshrc
@@ -120,4 +127,3 @@ else
 fi
 
 echo "Dotfiles setup completed successfully."
-
