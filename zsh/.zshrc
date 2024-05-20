@@ -123,6 +123,9 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 alias v="nvim ."
 alias svba="source venv/bin/activate"
 alias ll="lsd -l"
+
+export BAT_THEME="Catppuccin Mocha"
+alias cat='bat --paging=never' 
 alias cd=z
 alias setupvenv="~/dotfiles/setup_venv_gum.sh"
 

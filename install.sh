@@ -126,4 +126,28 @@ else
     echo "IPython is not installed, skipping IPython setup."
 fi
 
+# Install bat themes if they do not exist
+BAT_THEME_DIR="$(bat --config-dir)/themes"
+BAT_THEME_URLS=(
+    "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Latte.tmTheme"
+    "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme"
+    "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Macchiato.tmTheme"
+    "https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Mocha.tmTheme"
+)
+
+echo "Checking bat themes installation..."
+mkdir -p "$BAT_THEME_DIR"
+for url in "${BAT_THEME_URLS[@]}"; do
+    theme_file="$BAT_THEME_DIR/$(basename "$url")"
+    if [ ! -f "$theme_file" ]; then
+        echo "Downloading $(basename "$url")..."
+        wget -P "$BAT_THEME_DIR" "$url"
+    else
+        echo "$(basename "$url") already installed."
+    fi
+done
+
+# Rebuild bat's cache
+bat cache --build
+
 echo "Dotfiles setup completed successfully."
