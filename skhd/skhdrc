@@ -50,8 +50,10 @@ shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
 shift + alt - f : yabai -m window --display north; yabai -m display --focus north;
 
 #move window to prev and next space
-shift + alt - p : yabai -m window --space prev; yabai -m space --focus prev;
-shift + alt - n : yabai -m window --space next; yabai -m space --focus next;
+shift + alt - p : yabai -m window --space prev; osascript -e 'tell application "System Events" to key code 123 using {option down, shift down}'
+# yabai -m space --focus prev;
+shift + alt - n : yabai -m window --space next; osascript -e 'tell application "System Events" to key code 124 using {option down, shift down}'
+# yabai -m space --focus next;
 
 # move window to space #
 shift + alt - 1 : yabai -m window --space 1;
