@@ -2,17 +2,20 @@
 
 # Path to the directory containing your daily notes
 NOTES_DIR="/Users/theunvanvliet/Library/CloudStorage/GoogleDrive-theunis@gmail.com/My Drive/Notes/50-59 Life/51 Journal"
+
 # Function to display help message
 show_help() {
   echo "Usage: habit_tracker.sh [option]"
   echo
   echo "Options:"
   echo "  status       Display the current status of all habits"
+  echo "  detail       Display detailed status of all habits"
   echo "  habit-name   Toggle the status of the specified habit"
   echo "  help         Show this help message"
   echo
   echo "Example:"
   echo "  habit_tracker.sh status"
+  echo "  habit_tracker.sh detail"
   echo "  habit_tracker.sh habit-wake-up-with-alarm"
 }
 
@@ -44,21 +47,24 @@ HABITS=$(grep "^habit-" "$LATEST_NOTE_PATH" | awk -F: '{print $1}')
 case "$1" in
   status)
     # Count total and completed habits
-    TOTAL_HABITS=$(echo "$HABITS" | wc -l)
+    TOTAL_HABITS=$(echo "$HABITS" | wc -l | xargs)
     COMPLETED_HABITS=0
     for habit in $HABITS; do
-      if [ "$(read_habit_status "$habit")" == "true" ]; then
+      if [ "$(grep "^$habit: true" "$LATEST_NOTE_PATH")" ]; then
         ((COMPLETED_HABITS++))
       fi
     done
 
-    # Display the status of habits
+    # Display the status of habits in a summary format for Sketchybar
     echo "Habits: $COMPLETED_HABITS/$TOTAL_HABITS"
+    ;;
+  detail)
+    # Display detailed status for Sketchybar dropdown
     printf "%-25s %s\n" "Habit" "Status"
     echo "----------------------------------------"
     for habit in $HABITS; do
       name=${habit#habit-}
-      status=$(read_habit_status "$habit")
+      status=$(grep "^$habit: " "$LATEST_NOTE_PATH" | awk '{print $2}')
       if [ "$status" == "true" ]; then
         printf "%-25s %s\n" "$name" "✅"
       elif [ "$status" == "false" ]; then
