@@ -69,18 +69,3 @@ ctrl + alt - q : yabai --stop-service
 ctrl + alt - s : yabai --start-service
 ctrl + alt - r : yabai --restart-service
 
-# focusing on applications
-# Enter 'application_focus' mode
-# alt - shift - f : :application_focus
-#
-# # Define 'application_focus' mode
-# application_focus < s : yabai -m window --focus "$(yabai -m query --windows | jq -r '.[] | select(.app == "Code").id')"
-# application_focus < t : yabai -m window --focus "$(yabai -m query --windows | jq -r '.[] | select(.app == "kitty").id')"
-# application_focus < f : yabai -m window --focus "$(yabai -m query --windows | jq -r '.[] | select(.app == "Firefox").id')"
-#
-# # Exit 'application_focus' mode on any other key
-# application_focus < * : :default
-#
-
-# keycompanion
-shift + alt - space : python3 /Users/theun/dotfiles/keycompanion.py;

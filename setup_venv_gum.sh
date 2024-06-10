@@ -105,7 +105,7 @@ else
 fi
 
 # Install IPython Kernel and any other necessary packages
-run_with_spinner "Installing IPython Kernel and additional packages" $VENV_DIR/bin/pip install jupyter-console ipykernel visidata pandas
+run_with_spinner "Installing IPython Kernel and additional packages" $VENV_DIR/bin/pip install jupyter-console ipykernel visidata pyarrow pandas
 
 # Ask for a custom kernel name
 KERNEL_NAME=$(gum input --width 80 --prompt.foreground $FOREGROUND_COLOUR --prompt 'Enter a name for the Jupyter kernel: ' --value "$(basename "$PWD")")

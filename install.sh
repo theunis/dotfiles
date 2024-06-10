@@ -35,6 +35,12 @@ create_symlink "${DOTFILES_DIR}/yabai" ~/.config/yabai
 # SKHD
 create_symlink "${DOTFILES_DIR}/skhd" ~/.config/skhd
 
+# Aerospace
+create_symlink "${DOTFILES_DIR}/aerospace" ~/.config/aerospace
+
+# Sketchybar
+create_symlink "${DOTFILES_DIR}/sketchybar" ~/.config/sketchybar
+
 # Neovim
 # create_symlink "${DOTFILES_DIR}/neovim/init.vim" ~/.config/nvim/init.vim
 
@@ -67,6 +73,15 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
     sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
     echo "oh-my-zsh is already installed."
+fi
+
+# Install alias-tips plugin
+echo "Installing alias-tips plugin..."
+ZSH_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins
+if [ ! -d "${ZSH_CUSTOM}/alias-tips" ]; then
+    git clone https://github.com/djui/alias-tips.git "${ZSH_CUSTOM}/alias-tips"
+else
+    echo "alias-tips plugin is already installed."
 fi
 
 # Check and install Homebrew

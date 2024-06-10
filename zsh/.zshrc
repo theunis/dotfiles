@@ -81,7 +81,7 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 
 # zsh-syntax-highlighting must be last in the list
-plugins=(git python pip aliases  zsh-syntax-highlighting)
+plugins=(git python pip aliases zsh-syntax-highlighting alias-tips) 
 # tmux
 
 source $ZSH/oh-my-zsh.sh
