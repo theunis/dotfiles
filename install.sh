@@ -165,4 +165,9 @@ done
 # Rebuild bat's cache
 bat cache --build
 
+
+echo "Copying fabric patterns"
+
+cp -a ./custom-fabric-patterns/* ~/.config/fabric/patterns/
+
 echo "Dotfiles setup completed successfully."
