@@ -134,3 +134,7 @@ if [ -f ~/.zshrc_local ]; then
 fi
 
 if [ -f "/Users/theunvanvliet/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/theunvanvliet/.config/fabric/fabric-bootstrap.inc"; fi
+
+ask() {
+    echo "$1" | fabric -p respond_simple | bat -l md
+}
