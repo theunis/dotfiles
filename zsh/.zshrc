@@ -125,7 +125,6 @@ alias svba="source venv/bin/activate"
 alias ll="lsd -l"
 
 export BAT_THEME="Catppuccin Mocha"
-alias cat='bat --paging=never' 
 alias cd=z
 alias setupvenv="~/dotfiles/setup_venv_gum.sh"
 
@@ -134,3 +133,4 @@ if [ -f ~/.zshrc_local ]; then
     source ~/.zshrc_local
 fi
 
+if [ -f "/Users/theunvanvliet/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/theunvanvliet/.config/fabric/fabric-bootstrap.inc"; fi
