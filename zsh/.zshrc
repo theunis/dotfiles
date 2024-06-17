@@ -136,5 +136,6 @@ fi
 if [ -f "/Users/theunvanvliet/.config/fabric/fabric-bootstrap.inc" ]; then . "/Users/theunvanvliet/.config/fabric/fabric-bootstrap.inc"; fi
 
 ask() {
-    echo "$1" | fabric -p respond_simple | bat --style=plain -l md
+    echo "$1" | fabric -p respond_simple | tee /tmp/output | bat --style=plain -l md
 }
+bindkey \^U backward-kill-line
