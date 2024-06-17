@@ -125,8 +125,9 @@ alias svba="source venv/bin/activate"
 alias ll="lsd -l"
 
 export BAT_THEME="Catppuccin Mocha"
-alias cd=z
 alias setupvenv="~/dotfiles/setup_venv_gum.sh"
+
+export CDPATH=CDPATH=$HOME:$HOME/Development:..
 
 # Source local configurations if the file exists
 if [ -f ~/.zshrc_local ]; then
