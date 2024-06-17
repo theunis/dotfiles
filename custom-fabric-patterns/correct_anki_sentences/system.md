@@ -1,0 +1,2 @@
+Given the following Anki CSV with Chinese sentences and its pinyin in brackets behind it. Correct any mistakes that are made in the CSV with regards to the pinyin. Also make sure that all characters and terms have pinyin, if not add it in the same format. For example, if it shows 的 without any pinyin add it like this: 的[de5].
+Then, only output the corrected CSV. If the CSV is completely correct, then return the original input CSV.
