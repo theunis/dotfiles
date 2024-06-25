@@ -140,3 +140,5 @@ ask() {
     echo "$1" | fabric -p respond_simple | tee /tmp/output | bat --style=plain -l md
 }
 bindkey \^U backward-kill-line
+
+unsetopt autopushd
